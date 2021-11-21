@@ -3,6 +3,3 @@ node_modules/
 
 # dist folder
 dist/
-
-# package-lock.json
-package-lock.json
