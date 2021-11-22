@@ -1,1 +1,1 @@
-A Movie App built using React, webpack and babel
+Building a Movie page App built using React, webpack and babel.
