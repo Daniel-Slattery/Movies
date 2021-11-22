@@ -6,10 +6,11 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getDiscoverMovies().then((newMovies) => {
+    const fetchMovies = async () => {
+      const newMovies = await getDiscoverMovies();
       setMovies(newMovies);
-    });
-
+    };
+    fetchMovies();
     console.log("here", movies);
   }, []);
 
