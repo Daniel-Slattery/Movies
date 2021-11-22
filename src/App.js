@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import * as ApiClient from "./Services/ApiClient";
+import { getDiscoverMovies } from "./Services/ApiClient";
+import "./app.css";
 
 const App = () => {
-  const [movies, setMovies] = useState([
-    { backdrop_path: "cinER0ESG0eJ49kXlExM0MEWGxW.jpg" },
-  ]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    ApiClient.getDiscoverMovies().then((newMovies) => {
-      console.log(newMovies);
+    getDiscoverMovies().then((newMovies) => {
       setMovies(newMovies);
     });
 
@@ -16,7 +14,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="App">
       <h1>Movies List</h1>
       {movies &&
         movies.map((movie) => (
