@@ -48,7 +48,6 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h1>Discover Now</h1>
       <MovieList movies={movies} />
       {!status ? (
             Object.keys(lists).map(cat => (
