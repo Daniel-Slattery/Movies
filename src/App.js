@@ -1,61 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from 'react'
 import {
   getDiscoverMovies,
   getCategories,
-  getMoviesFromCategory,
-} from './Services/ApiClient';
-import './app.css';
-import MovieList from './components/MovieList/MovieList';
+  getMoviesFromCategory
+} from './Services/ApiClient'
+import './app.css'
+import MovieList from './components/MovieList/MovieList'
+import Spinner from './components/Spinner';
+
 
 const App = () => {
-  const [status, setStatus] = useState(true);
-  const [movies, setMovies] = useState({});
-  const [lists, setLists] = useState({ myList: [] });
-
+  const [status, setStatus] = useState(true)
+  const [movies, setMovies] = useState({})
+  const [lists, setLists] = useState({myList: []})
 
   const updateState = (name, list) => {
     setMovies(movies =>
       list.reduce(
         (acc, mov) => ({
           ...acc,
-          [mov.id]: Object.assign(mov, { mylist: false }),
+          [mov.id]: Object.assign(mov, {mylist: false})
         }),
         movies
       )
-    );
-    setLists(lists => ({ ...lists, [name]: list.map(mov => mov.id) }));
-  };
-
+    )
+    setLists(lists => ({...lists, [name]: list.map(mov => mov.id)}))
+  }
 
   useEffect(() => {
     const fetchDiscoverMovies = async () => {
-      const newMovies = await getDiscoverMovies();
-      updateState('discover', newMovies);
-    };
-
-    const fetchCategoryMovieLists = async () => {
-      const categories = await getCategories();
-      const daniel = await categories.map(({ id, name }) => getMoviesFromCategory(id))
-      console.log('here', daniel)
-     const dano = await daniel.map(({id, name}) => updateState(name, newMovies))
-
+      const newMovies = await getDiscoverMovies()
+      updateState('discover', newMovies)
     }
 
-    fetchDiscoverMovies();
-    fetchCategoryMovieLists();
-    // fetchCategories();
-  }, []);
+    getCategories()
+      .then(categories =>
+        Promise.all(
+          categories.map(({ id, name }) =>
+            getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
+          )
+        )
+      )
+      .then(() => setStatus(false));
+
+    fetchDiscoverMovies()
+  }, [])
 
   return (
     <div className='App'>
       <h1>Discover Now</h1>
       <MovieList movies={movies} />
-      {console.log(lists)}
-      <MovieList movies={lists.Action} />
-      <MovieList movies={movies} />
-
+      {!status ? (
+            Object.keys(lists).map(cat => (
+              <MovieList key={cat} movies={lists[cat].map(id => movies[id])} title={cat} />
+            ))
+          ) : (
+            <div className="App_loader">
+              <Spinner />
+            </div>
+          )}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
