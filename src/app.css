@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap');
 body {
   background: black;
 }
@@ -9,7 +10,8 @@ body {
 
 h2 {
   color: white;
-  font-family: monospace;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 300;
 }
 
 .MovieList {
