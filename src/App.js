@@ -6,8 +6,7 @@ import {
 } from './Services/ApiClient'
 import './app.css'
 import MovieList from './components/MovieList/MovieList'
-import Spinner from './components/Spinner';
-
+import Spinner from './components/Spinner'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -34,31 +33,40 @@ const App = () => {
     }
 
     const fetchAllMovies = async () => {
-      const categories = await getCategories();
-      await Promise.all(
-        categories.map(({ id, name }) =>
-          getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
-        )
+      const categories = await getCategories()
+
+      const movieLists = await Promise.all(
+        categories.map(({id}) => {
+          return getMoviesFromCategory(id)
+        })
       )
-      setLoading(false);
+
+      categories.forEach(({name}, index) => {
+        updateState(name, movieLists[index])
+      })
+      setLoading(false)
     }
 
-    fetchDiscoverMovies();
-    fetchAllMovies();
+    fetchDiscoverMovies()
+    fetchAllMovies()
   }, [])
 
   return (
     <div className='App'>
       <MovieList movies={movies} />
       {!loading ? (
-            Object.keys(lists).map(cat => (
-              <MovieList key={cat} movies={lists[cat].map(id => movies[id])} title={cat} />
-            ))
-          ) : (
-            <div className="App_loader">
-              <Spinner />
-            </div>
-          )}
+        Object.keys(lists).map(cat => (
+          <MovieList
+            key={cat}
+            movies={lists[cat].map(id => movies[id])}
+            title={cat}
+          />
+        ))
+      ) : (
+        <div className='App_loader'>
+          <Spinner />
+        </div>
+      )}
     </div>
   )
 }
