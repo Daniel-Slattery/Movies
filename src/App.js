@@ -33,17 +33,28 @@ const App = () => {
       updateState('discover', newMovies)
     }
 
-    getCategories()
-      .then(categories =>
-        Promise.all(
-          categories.map(({ id, name }) =>
-            getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
-          )
+    const fetchAllMovies = async () => {
+      const categories = await getCategories();
+      await Promise.all(
+        categories.map(({ id, name }) =>
+          getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
         )
       )
-      .then(() => setStatus(false));
+      setStatus(false);
+    }
 
-    fetchDiscoverMovies()
+    // getCategories()
+    //   .then(categories =>
+    //     Promise.all(
+    //       categories.map(({ id, name }) =>
+    //         getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
+    //       )
+    //     )
+    //   )
+    //   .then(() => setStatus(false));
+
+    fetchDiscoverMovies();
+    fetchAllMovies();
   }, [])
 
   return (
