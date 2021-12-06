@@ -7,8 +7,9 @@ body {
   flex-direction: column;
 }
 
-h1 {
+h2 {
   color: white;
+  font-family: monospace;
 }
 
 .MovieList {

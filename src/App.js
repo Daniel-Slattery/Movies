@@ -10,7 +10,7 @@ import Spinner from './components/Spinner';
 
 
 const App = () => {
-  const [status, setStatus] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [movies, setMovies] = useState({})
   const [lists, setLists] = useState({myList: []})
 
@@ -40,18 +40,8 @@ const App = () => {
           getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
         )
       )
-      setStatus(false);
+      setLoading(false);
     }
-
-    // getCategories()
-    //   .then(categories =>
-    //     Promise.all(
-    //       categories.map(({ id, name }) =>
-    //         getMoviesFromCategory(id).then(newMovies => updateState(name, newMovies))
-    //       )
-    //     )
-    //   )
-    //   .then(() => setStatus(false));
 
     fetchDiscoverMovies();
     fetchAllMovies();
@@ -59,9 +49,8 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h1>Discover Now</h1>
       <MovieList movies={movies} />
-      {!status ? (
+      {!loading ? (
             Object.keys(lists).map(cat => (
               <MovieList key={cat} movies={lists[cat].map(id => movies[id])} title={cat} />
             ))
