@@ -3,13 +3,12 @@
   flex-wrap: nowrap;
   margin-bottom: 5vh;
   padding-left: 5vw;
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll;
+
 }
 
-.list_scroll::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+.list_scroll:hover {
+  transform: translateX(-100px);
+  transition: transform 1s ease;
 }
 
 .list_title{

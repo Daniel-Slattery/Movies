@@ -40,7 +40,6 @@ const App = () => {
           return getMoviesFromCategory(id)
         })
       )
-
       categories.forEach(({name}, index) => {
         updateState(name, movieLists[index])
       })
@@ -53,7 +52,6 @@ const App = () => {
 
   return (
     <div className='App'>
-      <MovieList movies={movies} />
       {!loading ? (
         Object.keys(lists).map(cat => (
           <MovieList
