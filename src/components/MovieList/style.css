@@ -1,14 +1,6 @@
-.list_scroll{
-  display: flex;
-  flex-wrap: nowrap;
-  margin-bottom: 5vh;
-  padding-left: 5vw;
-
-}
-
-.list_scroll:hover {
-  transform: translateX(-100px);
-  transition: transform 1s ease;
+.list_scroll {
+    display: flex;
+    padding: 0 55px;
 }
 
 .list_title{
@@ -16,4 +8,28 @@
   font-weight: 500;
   margin-bottom: 20px;
   padding-left: 5vw;
+}
+
+.MovieTile {
+  background: green;
+  flex: 0 0 19.7%;
+  text-align: center;
+  margin: 0 2px;
+  transition: transform 300ms ease 100ms;
+}
+
+.list_scroll:hover .MovieTile {
+  transform: translateX(-50px);
+  transition: transform 1s ;
+}
+
+.MovieTile:hover {
+  transform: translateX(25%);
+  transform: scale(1.5) !important;
+  transition: transform 1s;
+  z-index: 10;
+}
+
+.MovieTile:hover ~ .MovieTile {
+  transform: translateX(50px);
 }
