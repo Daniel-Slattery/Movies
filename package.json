@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve",
-    "build": "webpack"
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Daniel-Slattery/Movies-webpack/issues"
   },
-  "homepage": "https://github.com/Daniel-Slattery/Movies-webpack#readme",
+  "homepage": "https://daniel-slattery.github.io/Movies-webpack/",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "react": "^17.0.2",
@@ -29,6 +31,7 @@
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.2",
