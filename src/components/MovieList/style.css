@@ -1,20 +1,24 @@
 .list_scroll {
     display: flex;
     padding: 0 55px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+
+.list_scroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 
 .list_title{
   font-size: 1.6em;
   font-weight: 500;
-  margin-bottom: 20px;
   padding-left: 5vw;
 }
 
 .MovieTile {
-  background: green;
-  flex: 0 0 19.7%;
   text-align: center;
-  margin: 0 2px;
+  margin: 5.5vh 2px;
   transition: transform 300ms ease 100ms;
 }
 
