@@ -19,18 +19,17 @@
 .MovieTile {
   text-align: center;
   margin: 5.5vh 2px;
-  transition: transform 300ms ease 100ms;
+  transition: transform 700ms;
 }
 
 .list_scroll:hover .MovieTile {
   transform: translateX(-50px);
-  transition: transform 1s ;
+  transition: transform 700ms ;
 }
 
 .MovieTile:hover {
   transform: translateX(25%);
   transform: scale(1.5) !important;
-  transition: transform 1s;
   z-index: 10;
 }
 
