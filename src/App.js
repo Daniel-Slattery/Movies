@@ -13,6 +13,7 @@ const App = () => {
   const [movies, setMovies] = useState({})
   const [lists, setLists] = useState({myList: []})
 
+
   const updateState = (name, list) => {
     setMovies(movies =>
       list.reduce(
@@ -72,6 +73,7 @@ const App = () => {
             movies={lists[cat].map(id => movies[id])}
             title={cat}
             addMyList={addMyList}
+            lists={lists}
           />
         ))
       ) : (
