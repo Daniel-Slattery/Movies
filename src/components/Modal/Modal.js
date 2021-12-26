@@ -6,9 +6,9 @@ const MODAL_STYLES = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  backgroundColor: 'gray',
+  backgroundColor: '#202124',
   padding: '50px',
-  zIndex: 1000
+  zIndex: 1000,
 }
 
 const OVERLAY_STYLES = {
@@ -21,23 +21,14 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 }
 
-export default function Modal({ open, children, onClose, addMyList, lists, id }) {
+export default function Modal({ open, children }) {
   if (!open) return null
-
-  const addToListHandler = () => {
-    addMyList();
-    onClose();
-  }
 
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         {children}
-        <button onClick={onClose}>Close</button>
-        <button onClick={addToListHandler}>{lists.myList.includes(id)
-        ? 'Remove from My List'
-        : 'Add to My List'}</button>
       </div>
     </>,
     document.getElementById('portal')
