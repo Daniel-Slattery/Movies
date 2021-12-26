@@ -73,6 +73,7 @@ const App = () => {
             movies={lists[cat].map(id => movies[id])}
             title={cat}
             addMyList={addMyList}
+            lists={lists}
           />
         ))
       ) : (
