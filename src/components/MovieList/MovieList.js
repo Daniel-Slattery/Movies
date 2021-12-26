@@ -2,7 +2,7 @@ import React from 'react';
 import MovieTile from '../MovieTile/MovieTile';
 import './style.css';
 
-const MovieList = ({ movies, title }) => (
+const MovieList = ({ movies, title, addMyList }) => (
   <div>
     {movies.length > 0 && (
       <div>
@@ -11,7 +11,7 @@ const MovieList = ({ movies, title }) => (
         </div>
         <div className="list_scroll">
           {movies.map(movie => (
-            <MovieTile key={movie.id} movie={movie} />
+            <MovieTile key={movie.id} movie={movie} addMyList={addMyList} />
           ))}
         </div>
       </div>

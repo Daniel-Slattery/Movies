@@ -26,6 +26,19 @@ const App = () => {
     setLists(lists => ({...lists, [name]: list.map(mov => mov.id)}))
   }
 
+  const addMyList = id => {
+    setLists(lists => ({
+      ...lists,
+      myList: lists.myList.includes(id)
+        ? lists.myList.filter(myId => myId !== id)
+        : [...lists.myList, id],
+    }));
+    setMovies(movies => ({
+      ...movies,
+      [id]: Object.assign(movies[id], { mylist: !movies[id].mylist }),
+    }));
+  };
+
   useEffect(() => {
     const fetchDiscoverMovies = async () => {
       const newMovies = await getDiscoverMovies()
@@ -58,6 +71,7 @@ const App = () => {
             key={cat}
             movies={lists[cat].map(id => movies[id])}
             title={cat}
+            addMyList={addMyList}
           />
         ))
       ) : (
