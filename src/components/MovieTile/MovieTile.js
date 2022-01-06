@@ -31,7 +31,7 @@ const MovieTile = ({movie, addMyList, lists}) => {
         <h3>Relased: {movie.release_date}</h3>
         <h3>Score: {movie.vote_average}/10</h3>
         <div className='button-container'>
-          <button onClick={() => setModalOpen(false)}>Close</button>
+          <Button onClick={() => setModalOpen(false)} text={'Close'} />
           <Button
             text={
               lists.myList.includes(movie.id)
