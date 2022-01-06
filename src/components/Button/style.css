@@ -1,5 +1,5 @@
 button {
-  background-color: rgb(144, 212, 99);
+  background-color: rgb(92, 131, 236);
   cursor: pointer;
   border: none;
   height: 2rem
@@ -7,4 +7,10 @@ button {
 
 p {
   margin: 5px;
+}
+
+.spinner-container {
+  height: 200px;
+  width: 200px;
+  background-color: lightblue;
 }

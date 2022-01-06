@@ -77,7 +77,7 @@ const App = () => {
           />
         ))
       ) : (
-        <div className='App_loader'>
+        <div>
           <Spinner />
         </div>
       )}

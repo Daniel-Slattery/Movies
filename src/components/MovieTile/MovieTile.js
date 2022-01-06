@@ -5,11 +5,15 @@ import './style.css'
 
 const MovieTile = ({movie, addMyList, lists}) => {
   const [modalOpen, setModalOpen] = useState(false)
+  const [buttonLoading, setButtonLoading] = useState(false)
 
   const addToListHandler = () => {
+    setButtonLoading(true)
     setTimeout(() => {
       addMyList(movie.id)
       setModalOpen(false)
+    setButtonLoading(false)
+
     }, 1000)
   }
 
@@ -34,6 +38,7 @@ const MovieTile = ({movie, addMyList, lists}) => {
                 ? 'Remove from My List'
                 : 'Add to My List'
             }
+            loading={buttonLoading}
             onClick={addToListHandler}
           />
         </div>
