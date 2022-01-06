@@ -1,0 +1,10 @@
+button {
+  background-color: rgb(144, 212, 99);
+  cursor: pointer;
+  border: none;
+  height: 2rem
+}
+
+p {
+  margin: 5px;
+}

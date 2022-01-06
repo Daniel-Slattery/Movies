@@ -20,6 +20,7 @@
   text-align: center;
   margin: 5.5vh 2px;
   transition: transform 700ms;
+  cursor: pointer
 }
 
 .list_scroll:hover .MovieTile {
