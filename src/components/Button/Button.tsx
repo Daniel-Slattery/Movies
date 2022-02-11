@@ -5,7 +5,7 @@ import './style.css'
 type Props = {
   text: string;
   onClick: () => any;
-  loading: boolean;
+  loading?: boolean;
 }
 
 const Button = ({text, onClick, loading}: Props) => {

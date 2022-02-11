@@ -3,7 +3,13 @@ import Button from '../Button/Button'
 import Modal from '../Modal/Modal'
 import './style.css'
 
-const MovieTile = ({movie, addMyList, lists}) => {
+type Props = {
+  movie: any,
+  addMyList: any,
+  lists: any,
+}
+
+const MovieTile = ({movie, addMyList, lists}: Props) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false)
 
