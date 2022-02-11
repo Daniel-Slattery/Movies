@@ -2,16 +2,22 @@ import React from 'react'
 import SyncLoader from 'react-spinners/SyncLoader'
 import './style.css'
 
-const Button = ({text, onClick, loading}) => {
+type Props = {
+  text: string;
+  onClick: () => any;
+  loading: boolean;
+}
+
+const Button = ({text, onClick, loading}: Props) => {
   return (
     <>
       <button onClick={onClick}>
         {loading ? (
           <SyncLoader
-            color={'pink'}
-            loading={loading}
-          />
-          ) : (
+          color={'pink'}
+          loading={loading}
+        />
+        ) : (
           <p>{text}</p>
         )}
       </button>
