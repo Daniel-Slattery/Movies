@@ -7,8 +7,6 @@ Simple App that pulls data from an api and displays on page. Design based on Net
 
 ![app in use](client/assets/moviesApp.gif)
 
-
-<iframe src="https://drive.google.com/file/d/1SWK5o3vXOAXelq_Ff-giThcRRNk7Hgx8/preview" width="640" height="480"></iframe>
 ## Deployment
 Deployed on github pages
 
