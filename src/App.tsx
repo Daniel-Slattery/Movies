@@ -6,7 +6,7 @@ import {
 } from './Services/ApiClient'
 import './app.css'
 import MovieList from './components/MovieList/MovieList'
-import Spinner from './components/Spinner'
+import Spinner from './components/Spinner/Spinner'
 
 const App = () => {
   const [loading, setLoading] = useState(true)

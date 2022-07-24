@@ -2,7 +2,11 @@
 body {
   background: black;
   font-family: 'Readex Pro', sans-serif;
-  color: white
+  color: white;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 
 .App {
