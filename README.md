@@ -5,7 +5,7 @@ Using this repo to test and learn different tech
 
 Simple App that pulls data from an api and displays on page. Design based on Netflix.
 
-![app in use](client/assets/moviesApp.gif)
+![app in use](src/assets/moviesApp.gif)
 
 ## Deployment
 Deployed on github pages
