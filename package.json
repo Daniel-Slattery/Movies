@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Daniel-Slattery/Movies-webpack.git"
+    "url": "git+https://github.com/Daniel-Slattery/Movies.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Daniel-Slattery/Movies-webpack/issues"
+    "url": "https://github.com/Daniel-Slattery/Movies/issues"
   },
-  "homepage": "https://daniel-slattery.github.io/Movies-webpack/",
+  "homepage": "https://github.com/Daniel-Slattery/Movies/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
