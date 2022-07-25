@@ -1,5 +1,5 @@
 # Movie App
-Simple Movie page App in React outside the create-react-app environment.
+Simple Movie page App in React created from the ground up outside the create-react-app environment.
 
 Using this repo to test and learn different tech
 

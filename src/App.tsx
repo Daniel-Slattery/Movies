@@ -3,7 +3,7 @@ import {
   getDiscoverMovies,
   getCategories,
   getMoviesFromCategory
-} from './Services/ApiClient'
+} from './services/ApiClient'
 import './app.css'
 import MovieList from './components/MovieList/MovieList'
 import Spinner from './components/Spinner/Spinner'
