@@ -1,16 +1,16 @@
 .list_scroll {
-    display: flex;
-    padding: 0 55px;
-    overflow-y: scroll;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
+  display: flex;
+  padding: 0 55px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
 }
 
 .list_scroll::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
 
-.list_title{
+.list_title {
   font-size: 1.6em;
   font-weight: 500;
   padding-left: 5vw;
@@ -20,16 +20,15 @@
   text-align: center;
   margin: 5.5vh 2px;
   transition: transform 700ms;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .list_scroll:hover .MovieTile {
   transform: translateX(-50px);
-  transition: transform 700ms ;
+  transition: transform 700ms;
 }
 
 .MovieTile:hover {
-  transform: translateX(25%);
   transform: scale(1.5) !important;
   z-index: 10;
 }
