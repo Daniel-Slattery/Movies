@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {
-  getDiscoverMovies,
-  getCategories,
-  getMoviesFromCategory
-} from './services/ApiClient'
+import {getCategories, getMoviesFromCategory} from './services/ApiClient'
 import './app.css'
 import MovieList from './components/MovieList/MovieList'
 import Spinner from './components/Spinner/Spinner'
@@ -12,7 +8,6 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [movies, setMovies] = useState({})
   const [lists, setLists] = useState({myList: []})
-
 
   const updateState = (name, list) => {
     setMovies(movies =>
@@ -32,35 +27,30 @@ const App = () => {
       ...lists,
       myList: lists.myList.includes(id)
         ? lists.myList.filter(myId => myId !== id)
-        : [...lists.myList, id],
-    }));
+        : [...lists.myList, id]
+    }))
     setMovies(movies => ({
       ...movies,
-      [id]: Object.assign(movies[id], { mylist: !movies[id].mylist }),
-    }));
-  };
+      [id]: Object.assign(movies[id], {mylist: !movies[id].mylist})
+    }))
+  }
 
   useEffect(() => {
-    const fetchDiscoverMovies = async () => {
-      const newMovies = await getDiscoverMovies()
-      updateState('discover', newMovies)
-    }
-
     const fetchAllMovies = async () => {
-      const categories = await getCategories()
+      const {genres} = await getCategories()
 
       const movieLists = await Promise.all(
-        categories.map(({id}) => {
-          return getMoviesFromCategory(id)
+        genres.map(({id}) => {
+          return getMoviesFromCategory(id).then(res => res.results)
         })
       )
-      categories.forEach(({name}, index) => {
+
+      genres.forEach(({name}, index) => {
         updateState(name, movieLists[index])
       })
       setLoading(false)
     }
 
-    fetchDiscoverMovies()
     fetchAllMovies()
   }, [])
 

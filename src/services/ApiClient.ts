@@ -1,10 +1,20 @@
-const BASE_URL = "https://movied.herokuapp.com";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY
+const BASE_URL = 'https://api.themoviedb.org/3'
 
-export const getDiscoverMovies = () => fetchRequest(`discover`);
-export const getCategories = () => fetchRequest(`categories`);
-export const getMoviesFromCategory = (id: string) => fetchRequest(`categories/${id}`);
+const fetchRequest = async (
+  endpoint: string,
+  params: Record<string, string> = {}
+) => {
+  const queryParams = new URLSearchParams({api_key: API_KEY, ...params})
+  const response = await fetch(`${BASE_URL}/${endpoint}?${queryParams}`)
 
-const fetchRequest = async (url: string) => {
-  const response = await fetch(`${BASE_URL}/${url}`);
-  return await response.json();
-};
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+
+  return response.json()
+}
+
+export const getCategories = () => fetchRequest('genre/movie/list')
+export const getMoviesFromCategory = (id: number) =>
+  fetchRequest('discover/movie', {with_genres: id.toString()})
